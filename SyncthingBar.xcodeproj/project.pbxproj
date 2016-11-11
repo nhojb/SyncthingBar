@@ -1,0 +1,412 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		527163611DD5F66400797C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527163601DD5F66400797C76 /* AppDelegate.swift */; };
+		527163631DD5F66400797C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527163621DD5F66400797C76 /* Assets.xcassets */; };
+		527163661DD5F66400797C76 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527163641DD5F66400797C76 /* MainMenu.xib */; };
+		527163711DD5F66400797C76 /* SyncthingBarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527163701DD5F66400797C76 /* SyncthingBarTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5271636D1DD5F66400797C76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 527163551DD5F66400797C76 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5271635C1DD5F66400797C76;
+			remoteInfo = SyncthingBar;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5271635D1DD5F66400797C76 /* SyncthingBar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SyncthingBar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		527163601DD5F66400797C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		527163621DD5F66400797C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		527163651DD5F66400797C76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		527163671DD5F66400797C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5271636C1DD5F66400797C76 /* SyncthingBarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SyncthingBarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		527163701DD5F66400797C76 /* SyncthingBarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyncthingBarTests.swift; sourceTree = "<group>"; };
+		527163721DD5F66400797C76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5271635A1DD5F66400797C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		527163691DD5F66400797C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		527163541DD5F66400797C76 = {
+			isa = PBXGroup;
+			children = (
+				5271635F1DD5F66400797C76 /* SyncthingBar */,
+				5271636F1DD5F66400797C76 /* SyncthingBarTests */,
+				5271635E1DD5F66400797C76 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5271635E1DD5F66400797C76 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5271635D1DD5F66400797C76 /* SyncthingBar.app */,
+				5271636C1DD5F66400797C76 /* SyncthingBarTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5271635F1DD5F66400797C76 /* SyncthingBar */ = {
+			isa = PBXGroup;
+			children = (
+				527163601DD5F66400797C76 /* AppDelegate.swift */,
+				527163621DD5F66400797C76 /* Assets.xcassets */,
+				527163641DD5F66400797C76 /* MainMenu.xib */,
+				527163671DD5F66400797C76 /* Info.plist */,
+			);
+			path = SyncthingBar;
+			sourceTree = "<group>";
+		};
+		5271636F1DD5F66400797C76 /* SyncthingBarTests */ = {
+			isa = PBXGroup;
+			children = (
+				527163701DD5F66400797C76 /* SyncthingBarTests.swift */,
+				527163721DD5F66400797C76 /* Info.plist */,
+			);
+			path = SyncthingBarTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5271635C1DD5F66400797C76 /* SyncthingBar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBar" */;
+			buildPhases = (
+				527163591DD5F66400797C76 /* Sources */,
+				5271635A1DD5F66400797C76 /* Frameworks */,
+				5271635B1DD5F66400797C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SyncthingBar;
+			productName = SyncthingBar;
+			productReference = 5271635D1DD5F66400797C76 /* SyncthingBar.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5271636B1DD5F66400797C76 /* SyncthingBarTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 527163781DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBarTests" */;
+			buildPhases = (
+				527163681DD5F66400797C76 /* Sources */,
+				527163691DD5F66400797C76 /* Frameworks */,
+				5271636A1DD5F66400797C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5271636E1DD5F66400797C76 /* PBXTargetDependency */,
+			);
+			name = SyncthingBarTests;
+			productName = SyncthingBarTests;
+			productReference = 5271636C1DD5F66400797C76 /* SyncthingBarTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		527163551DD5F66400797C76 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0810;
+				LastUpgradeCheck = 0810;
+				ORGANIZATIONNAME = "Olive Toast Software Ltd";
+				TargetAttributes = {
+					5271635C1DD5F66400797C76 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = MS8TKNV8QW;
+						ProvisioningStyle = Automatic;
+					};
+					5271636B1DD5F66400797C76 = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = MS8TKNV8QW;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 5271635C1DD5F66400797C76;
+					};
+				};
+			};
+			buildConfigurationList = 527163581DD5F66400797C76 /* Build configuration list for PBXProject "SyncthingBar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 527163541DD5F66400797C76;
+			productRefGroup = 5271635E1DD5F66400797C76 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5271635C1DD5F66400797C76 /* SyncthingBar */,
+				5271636B1DD5F66400797C76 /* SyncthingBarTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5271635B1DD5F66400797C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527163631DD5F66400797C76 /* Assets.xcassets in Resources */,
+				527163661DD5F66400797C76 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5271636A1DD5F66400797C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		527163591DD5F66400797C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527163611DD5F66400797C76 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		527163681DD5F66400797C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				527163711DD5F66400797C76 /* SyncthingBarTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5271636E1DD5F66400797C76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5271635C1DD5F66400797C76 /* SyncthingBar */;
+			targetProxy = 5271636D1DD5F66400797C76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		527163641DD5F66400797C76 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				527163651DD5F66400797C76 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		527163731DD5F66400797C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		527163741DD5F66400797C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		527163761DD5F66400797C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MS8TKNV8QW;
+				INFOPLIST_FILE = SyncthingBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		527163771DD5F66400797C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MS8TKNV8QW;
+				INFOPLIST_FILE = SyncthingBar/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBar;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		527163791DD5F66400797C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MS8TKNV8QW;
+				INFOPLIST_FILE = SyncthingBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SyncthingBar.app/Contents/MacOS/SyncthingBar";
+			};
+			name = Debug;
+		};
+		5271637A1DD5F66400797C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = MS8TKNV8QW;
+				INFOPLIST_FILE = SyncthingBarTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBarTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SyncthingBar.app/Contents/MacOS/SyncthingBar";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		527163581DD5F66400797C76 /* Build configuration list for PBXProject "SyncthingBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				527163731DD5F66400797C76 /* Debug */,
+				527163741DD5F66400797C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				527163761DD5F66400797C76 /* Debug */,
+				527163771DD5F66400797C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		527163781DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBarTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				527163791DD5F66400797C76 /* Debug */,
+				5271637A1DD5F66400797C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 527163551DD5F66400797C76 /* Project object */;
+}
