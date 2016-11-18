@@ -1,3 +1,3 @@
 # SyncthingBar
 
-A macOS status item for syncthing.
+A macOS menu bar status item for syncthing.
