@@ -35,6 +35,26 @@ class SyncthingClient {
         }
     }
 
+    /// Polls syncthing up to "repeating" times to check the connection.
+    func checkConnection(repeating: Int, completionHandler: @escaping(Bool, Error?) -> Void) {
+        var count = 0
+
+        Timer.scheduledTimer(withTimeInterval:1.0, repeats:true) { (timer) in
+            count += 1
+            if count >= repeating {
+                timer.invalidate()
+            }
+
+            self.ping() { (ok, error) in
+                // We ignore the error to ensure we keep checking:
+                if ok {
+                    timer.invalidate()
+                    completionHandler(ok, nil)
+                }
+            }
+        }
+    }
+
     func ping(completionHandler: @escaping (Bool, Error?) -> Void) {
         if let request = self.restRequest(forPath:"/rest/system/ping") {
             URLSession.shared.dataTask(with:request) { (data, response, error) in
