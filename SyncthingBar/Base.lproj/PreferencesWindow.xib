@@ -87,7 +87,7 @@
                     <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-rv-aYy">
                         <rect key="frame" x="122" y="18" width="272" height="18"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Open SyncthingBar at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qfm-rd-jbT">
+                        <buttonCell key="cell" type="check" title="Open Syncthing Bar at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qfm-rd-jbT">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
