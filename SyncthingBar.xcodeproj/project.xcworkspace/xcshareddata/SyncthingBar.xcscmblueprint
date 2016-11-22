@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "62AB281C105A43B6E68468CCC360374DEA6DDBE5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "62AB281C105A43B6E68468CCC360374DEA6DDBE5" : 9223372036854775807,
+    "03B1A7792A26CC7A979F306763BC66B909C07F75" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "4737ED11-F2D8-4325-BA9B-F5FA3DD7FFF6",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "62AB281C105A43B6E68468CCC360374DEA6DDBE5" : "SyncthingBar\/",
+    "03B1A7792A26CC7A979F306763BC66B909C07F75" : "LoginItems\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SyncthingBar",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SyncthingBar.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:nhojb\/LoginItems.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "03B1A7792A26CC7A979F306763BC66B909C07F75"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:nhojb\/SyncthingBar.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "62AB281C105A43B6E68468CCC360374DEA6DDBE5"
+    }
+  ]
+}

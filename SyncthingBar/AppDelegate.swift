@@ -10,6 +10,7 @@ import Cocoa
 
 let SyncthingURLDefaultsKey = "SyncthingURL"
 let SyncthingAPIKeyDefaultsKey = "SyncthingAPIKey"
+let SyncthingLaunchAtStartupDefaultsKey = "LaunchAtStartup"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
@@ -18,7 +19,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     @IBOutlet weak var connectedMenuItem: NSMenuItem!
 
-    lazy var webViewWindowController : WebViewWindowController = WebViewWindowController(windowNibName:"WebView")
+    lazy var webViewWindowController : WebViewWindowController = WebViewWindowController(windowNibName:"WebViewWindow")
+
+    lazy var preferencesWindowController : PreferencesWindowController = PreferencesWindowController(windowNibName:"PreferencesWindow")
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
 
@@ -40,7 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     func registerDefaults() {
-        UserDefaults.standard.register(defaults: [SyncthingURLDefaultsKey: "http://127.0.0.1:8384"])
+        UserDefaults.standard.register(defaults: [SyncthingURLDefaultsKey: "http://127.0.0.1:8384",
+                                                  SyncthingLaunchAtStartupDefaultsKey: true])
     }
 
     func applicationSupportURLFor(binary name: String) -> URL? {
@@ -56,55 +60,54 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        print("applicationDidFinishLaunching")
-
         self.registerDefaults()
 
         self.copySyncthing()
 
-        // TMP
-        //UserDefaults.standard.set("Aw0vS4JkRkID0qOe3hug7dvoBgRtmhPR", forKey:SyncthingAPIKeyDefaultsKey)
-        UserDefaults.standard.set("eg0yTcbb8KnpQMvDXOP60xPwgyq-KczN", forKey:SyncthingAPIKeyDefaultsKey)
-        // TMP
-
         self.statusItem.menu = self.statusMenu
         self.statusItem.image = NSImage(named: "SyncthingDisabled")!
 
-        guard let urlString = UserDefaults.standard.object(forKey:SyncthingURLDefaultsKey) as? String else {
+        self.updateClient()
+
+        if self.client == nil {
             self.openPreferences(self)
+        }
+
+        if UserDefaults.standard.bool(forKey:SyncthingLaunchAtStartupDefaultsKey) {
+            self.startSyncthing()
+        }
+
+        NotificationCenter.default.addObserver(forName:UserDefaults.didChangeNotification,
+                                               object:UserDefaults.standard,
+                                               queue:nil) { [unowned self] (notification) in
+            self.updateClient()
+        }
+    }
+
+    func applicationWillTerminate(_ aNotification: Notification) {
+        self.notify?.terminate()
+        self.syncthing?.terminate()
+    }
+
+    func updateClient() {
+        guard let url = UserDefaults.standard.url(forKey:SyncthingURLDefaultsKey) else {
             return
         }
 
         // TODO: Store in keychain?
         guard let apiKey = UserDefaults.standard.object(forKey:SyncthingAPIKeyDefaultsKey) as? String else {
-            self.openPreferences(self)
             return
         }
 
-        if let url = URL(string:urlString) {
-            self.client = SyncthingClient(url:url, apiKey:apiKey)
-        }
+        self.client = SyncthingClient(url:url, apiKey:apiKey)
 
-        if self.client != nil {
-            // Start syncthing process
-            self.startSyncthing()
+        self.client?.ping() { [unowned self] (ok, error) in
+            self.connected = ok
         }
-        else {
-            self.openPreferences(self)
-        }
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        print("applicationWillTerminate")
-        self.notify?.terminate()
-        self.syncthing?.terminate()
     }
 
     func startSyncthing() {
-        print("startSyncthing")
         // syncthing -no-browser
-        // syncthing-inotify
-
         if self.syncthing == nil && Processes.find(processName:"syncthing") == nil {
             if let url = self.applicationSupportURLFor(binary:"syncthing") {
                 print("Launching: \(url)")
@@ -115,6 +118,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             print("syncthing already running!")
         }
 
+        // syncthing-inotify
         if self.notify == nil && Processes.find(processName:"syncthing-inotify") == nil {
             if let url = self.applicationSupportURLFor(binary:"syncthing-inotify") {
                 print("Launching: \(url)")
@@ -125,12 +129,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             print("syncthing-inotify already running!")
         }
 
-        print("self.syncthing: \(self.syncthing)")
-        print("self.notify: \(self.notify)")
-
         // Poll until the server is launched:
-        self.client?.checkConnection(repeating:5) { (ok, error) in
-            print("connect: \(ok)")
+        self.client?.checkConnection(repeating:5) { [unowned self] (ok, error) in
             self.connected = ok
         }
     }
@@ -141,22 +141,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     @IBAction func openPreferences(_ sender: Any) {
+        NSApplication.shared().activate(ignoringOtherApps: true)
 
+        self.preferencesWindowController.showWindow(self)
     }
 
     @IBAction func openSyncthing(_ sender: Any) {
-        NSApplication.shared().activate(ignoringOtherApps: true)
+        // User UserDefaults url in case the API key has not yet been set (user can still connect via browser).
+        if let url = UserDefaults.standard.url(forKey:SyncthingURLDefaultsKey) {
+            NSApplication.shared().activate(ignoringOtherApps: true)
 
-        self.webViewWindowController.showWindow(self)
+            self.webViewWindowController.showWindow(self)
 
-        if let url = self.client?.url {
             self.webViewWindowController.webView?.mainFrame.load(URLRequest(url:url))
         }
     }
 
     // NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
-        self.client?.ping() { (ok, error) in
+        self.client?.ping() { [unowned self] (ok, error) in
             self.connected = ok
         }
     }

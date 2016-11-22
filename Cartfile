@@ -1,0 +1,8 @@
+#
+# Carthage dependency manager
+#
+# brew install carthage
+# carthage bootstrap --no-build
+#
+
+github "nhojb/LoginItems" >= 1.0

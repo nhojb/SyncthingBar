@@ -16,7 +16,7 @@ enum SyncthingClientError : Error {
 
 class SyncthingClient {
     let apiKey : String
-    var url : URL
+    let url : URL
 
     init(url: URL, apiKey: String) {
         self.url = url

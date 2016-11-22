@@ -30,12 +30,14 @@
                         <action selector="openSyncthing:" target="Voe-Tx-rLC" id="kqL-gk-TGI"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Preferences" keyEquivalent="," id="AGp-FW-563">
+                <menuItem title="Preferences" id="AGp-FW-563">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="openPreferences:" target="Voe-Tx-rLC" id="RHn-rT-6FX"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Quit" keyEquivalent="q" id="UtF-Lr-e8X">
+                <menuItem title="Quit" id="UtF-Lr-e8X">
+                    <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="terminate:" target="-1" id="At4-Ru-jht"/>
                     </connections>

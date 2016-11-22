@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521BB1A21DE4800400F308B2 /* LoginItems.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 521BB1A11DE4800400F308B2 /* LoginItems.framework */; };
+		521BB1A31DE4803F00F308B2 /* LoginItems.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 521BB1A11DE4800400F308B2 /* LoginItems.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		521BB1A51DE4890100F308B2 /* UserDefaults+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BB1A41DE4890100F308B2 /* UserDefaults+URL.swift */; };
+		521BB1C01DE4959F00F308B2 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BB1BF1DE4959F00F308B2 /* PreferencesWindowController.swift */; };
 		524094BC1DE314A200C3BEAF /* Processes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524094BB1DE314A200C3BEAF /* Processes.swift */; };
 		52524B0C1DDE62B3003953BD /* WebViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */; };
 		52524B0F1DDE62D9003953BD /* WebViewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52524B0D1DDE62D9003953BD /* WebViewWindow.xib */; };
 		52524B111DDF8505003953BD /* URLSession+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52524B101DDF8505003953BD /* URLSession+JSON.swift */; };
 		52524B151DDFA27D003953BD /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = 52524B131DDFA27D003953BD /* syncthing */; };
 		52524B161DDFA27D003953BD /* syncthing-inotify in Resources */ = {isa = PBXBuildFile; fileRef = 52524B141DDFA27D003953BD /* syncthing-inotify */; };
+		52524B181DE3A889003953BD /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52524B171DE3A889003953BD /* PreferencesWindow.xib */; };
 		527163611DD5F66400797C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527163601DD5F66400797C76 /* AppDelegate.swift */; };
 		527163631DD5F66400797C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527163621DD5F66400797C76 /* Assets.xcassets */; };
 		527163661DD5F66400797C76 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527163641DD5F66400797C76 /* MainMenu.xib */; };
@@ -31,7 +36,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		524094D51DE451D700C3BEAF /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				521BB1A31DE4803F00F308B2 /* LoginItems.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		521BB1A11DE4800400F308B2 /* LoginItems.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoginItems.framework; path = Carthage/Build/Mac/LoginItems.framework; sourceTree = "<group>"; };
+		521BB1A41DE4890100F308B2 /* UserDefaults+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+URL.swift"; sourceTree = "<group>"; };
+		521BB1BF1DE4959F00F308B2 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
 		524094BB1DE314A200C3BEAF /* Processes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Processes.swift; sourceTree = "<group>"; };
 		524094C11DE31DF500C3BEAF /* SyncthingBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SyncthingBar-Bridging-Header.h"; sourceTree = "<group>"; };
 		52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewWindowController.swift; sourceTree = "<group>"; };
@@ -39,6 +61,7 @@
 		52524B101DDF8505003953BD /* URLSession+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+JSON.swift"; sourceTree = "<group>"; };
 		52524B131DDFA27D003953BD /* syncthing */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = syncthing; path = SyncthingBar/Resources/syncthing; sourceTree = "<group>"; };
 		52524B141DDFA27D003953BD /* syncthing-inotify */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "syncthing-inotify"; path = "SyncthingBar/Resources/syncthing-inotify"; sourceTree = "<group>"; };
+		52524B171DE3A889003953BD /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		5271635D1DD5F66400797C76 /* Syncthing Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Syncthing Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527163601DD5F66400797C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527163621DD5F66400797C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -55,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				521BB1A21DE4800400F308B2 /* LoginItems.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		521BB1A01DE47FF100F308B2 /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				521BB1A11DE4800400F308B2 /* LoginItems.framework */,
+			);
+			name = Carthage;
+			sourceTree = "<group>";
+		};
 		52524B121DDFA26D003953BD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -84,6 +116,7 @@
 				5271636F1DD5F66400797C76 /* SyncthingBarTests */,
 				52524B121DDFA26D003953BD /* Resources */,
 				5271635E1DD5F66400797C76 /* Products */,
+				521BB1A01DE47FF100F308B2 /* Carthage */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,12 +136,15 @@
 				527163621DD5F66400797C76 /* Assets.xcassets */,
 				527163671DD5F66400797C76 /* Info.plist */,
 				527163641DD5F66400797C76 /* MainMenu.xib */,
+				52524B171DE3A889003953BD /* PreferencesWindow.xib */,
+				521BB1BF1DE4959F00F308B2 /* PreferencesWindowController.swift */,
 				524094BB1DE314A200C3BEAF /* Processes.swift */,
+				524094C11DE31DF500C3BEAF /* SyncthingBar-Bridging-Header.h */,
 				5275B68B1DD78728003C8F4B /* SyncthingClient.swift */,
 				52524B101DDF8505003953BD /* URLSession+JSON.swift */,
+				521BB1A41DE4890100F308B2 /* UserDefaults+URL.swift */,
 				52524B0D1DDE62D9003953BD /* WebViewWindow.xib */,
 				52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */,
-				524094C11DE31DF500C3BEAF /* SyncthingBar-Bridging-Header.h */,
 			);
 			path = SyncthingBar;
 			sourceTree = "<group>";
@@ -125,19 +161,20 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5271635C1DD5F66400797C76 /* Syncthing Bar */ = {
+		5271635C1DD5F66400797C76 /* SyncthingBar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "Syncthing Bar" */;
+			buildConfigurationList = 527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBar" */;
 			buildPhases = (
 				527163591DD5F66400797C76 /* Sources */,
 				5271635A1DD5F66400797C76 /* Frameworks */,
 				5271635B1DD5F66400797C76 /* Resources */,
+				524094D51DE451D700C3BEAF /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Syncthing Bar";
+			name = SyncthingBar;
 			productName = SyncthingBar;
 			productReference = 5271635D1DD5F66400797C76 /* Syncthing Bar.app */;
 			productType = "com.apple.product-type.application";
@@ -197,7 +234,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5271635C1DD5F66400797C76 /* Syncthing Bar */,
+				5271635C1DD5F66400797C76 /* SyncthingBar */,
 				5271636B1DD5F66400797C76 /* SyncthingBarTests */,
 			);
 		};
@@ -212,6 +249,7 @@
 				52524B151DDFA27D003953BD /* syncthing in Resources */,
 				527163631DD5F66400797C76 /* Assets.xcassets in Resources */,
 				527163661DD5F66400797C76 /* MainMenu.xib in Resources */,
+				52524B181DE3A889003953BD /* PreferencesWindow.xib in Resources */,
 				52524B0F1DDE62D9003953BD /* WebViewWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -234,7 +272,9 @@
 				52524B111DDF8505003953BD /* URLSession+JSON.swift in Sources */,
 				5275B68C1DD78728003C8F4B /* SyncthingClient.swift in Sources */,
 				52524B0C1DDE62B3003953BD /* WebViewWindowController.swift in Sources */,
+				521BB1C01DE4959F00F308B2 /* PreferencesWindowController.swift in Sources */,
 				527163611DD5F66400797C76 /* AppDelegate.swift in Sources */,
+				521BB1A51DE4890100F308B2 /* UserDefaults+URL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,7 +292,7 @@
 /* Begin PBXTargetDependency section */
 		5271636E1DD5F66400797C76 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 5271635C1DD5F66400797C76 /* Syncthing Bar */;
+			target = 5271635C1DD5F66400797C76 /* SyncthingBar */;
 			targetProxy = 5271636D1DD5F66400797C76 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -374,10 +414,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = MS8TKNV8QW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = SyncthingBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Syncthing Bar";
 				SWIFT_OBJC_BRIDGING_HEADER = "SyncthingBar/SyncthingBar-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0.1;
@@ -391,10 +435,14 @@
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = MS8TKNV8QW;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = SyncthingBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBar;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Syncthing Bar";
 				SWIFT_OBJC_BRIDGING_HEADER = "SyncthingBar/SyncthingBar-Bridging-Header.h";
 				SWIFT_VERSION = 3.0.1;
 			};
@@ -444,7 +492,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "Syncthing Bar" */ = {
+		527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				527163761DD5F66400797C76 /* Debug */,
