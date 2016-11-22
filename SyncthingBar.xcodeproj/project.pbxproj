@@ -11,13 +11,14 @@
 		521BB1A31DE4803F00F308B2 /* LoginItems.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 521BB1A11DE4800400F308B2 /* LoginItems.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		521BB1A51DE4890100F308B2 /* UserDefaults+URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BB1A41DE4890100F308B2 /* UserDefaults+URL.swift */; };
 		521BB1C01DE4959F00F308B2 /* PreferencesWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 521BB1BF1DE4959F00F308B2 /* PreferencesWindowController.swift */; };
+		521BB1C31DE4B17C00F308B2 /* LoginItems.framework.dSYM in Copy Framework Symbols */ = {isa = PBXBuildFile; fileRef = 521BB1C21DE4B17C00F308B2 /* LoginItems.framework.dSYM */; };
+		521BB1C61DE4B1D200F308B2 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 521BB1C41DE4B1D200F308B2 /* PreferencesWindow.xib */; };
 		524094BC1DE314A200C3BEAF /* Processes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524094BB1DE314A200C3BEAF /* Processes.swift */; };
 		52524B0C1DDE62B3003953BD /* WebViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */; };
 		52524B0F1DDE62D9003953BD /* WebViewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52524B0D1DDE62D9003953BD /* WebViewWindow.xib */; };
 		52524B111DDF8505003953BD /* URLSession+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52524B101DDF8505003953BD /* URLSession+JSON.swift */; };
 		52524B151DDFA27D003953BD /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = 52524B131DDFA27D003953BD /* syncthing */; };
 		52524B161DDFA27D003953BD /* syncthing-inotify in Resources */ = {isa = PBXBuildFile; fileRef = 52524B141DDFA27D003953BD /* syncthing-inotify */; };
-		52524B181DE3A889003953BD /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52524B171DE3A889003953BD /* PreferencesWindow.xib */; };
 		527163611DD5F66400797C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527163601DD5F66400797C76 /* AppDelegate.swift */; };
 		527163631DD5F66400797C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527163621DD5F66400797C76 /* Assets.xcassets */; };
 		527163661DD5F66400797C76 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527163641DD5F66400797C76 /* MainMenu.xib */; };
@@ -37,6 +38,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		521BB1C11DE4B14C00F308B2 /* Copy Framework Symbols */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 16;
+			files = (
+				521BB1C31DE4B17C00F308B2 /* LoginItems.framework.dSYM in Copy Framework Symbols */,
+			);
+			name = "Copy Framework Symbols";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		524094D51DE451D700C3BEAF /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -54,6 +66,8 @@
 		521BB1A11DE4800400F308B2 /* LoginItems.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LoginItems.framework; path = Carthage/Build/Mac/LoginItems.framework; sourceTree = "<group>"; };
 		521BB1A41DE4890100F308B2 /* UserDefaults+URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserDefaults+URL.swift"; sourceTree = "<group>"; };
 		521BB1BF1DE4959F00F308B2 /* PreferencesWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesWindowController.swift; sourceTree = "<group>"; };
+		521BB1C21DE4B17C00F308B2 /* LoginItems.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; name = LoginItems.framework.dSYM; path = Carthage/Build/Mac/LoginItems.framework.dSYM; sourceTree = "<group>"; };
+		521BB1C51DE4B1D200F308B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		524094BB1DE314A200C3BEAF /* Processes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Processes.swift; sourceTree = "<group>"; };
 		524094C11DE31DF500C3BEAF /* SyncthingBar-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SyncthingBar-Bridging-Header.h"; sourceTree = "<group>"; };
 		52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewWindowController.swift; sourceTree = "<group>"; };
@@ -61,7 +75,6 @@
 		52524B101DDF8505003953BD /* URLSession+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+JSON.swift"; sourceTree = "<group>"; };
 		52524B131DDFA27D003953BD /* syncthing */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = syncthing; path = SyncthingBar/Resources/syncthing; sourceTree = "<group>"; };
 		52524B141DDFA27D003953BD /* syncthing-inotify */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "syncthing-inotify"; path = "SyncthingBar/Resources/syncthing-inotify"; sourceTree = "<group>"; };
-		52524B171DE3A889003953BD /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = PreferencesWindow.xib; path = Base.lproj/PreferencesWindow.xib; sourceTree = "<group>"; };
 		5271635D1DD5F66400797C76 /* Syncthing Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Syncthing Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527163601DD5F66400797C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527163621DD5F66400797C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -96,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				521BB1A11DE4800400F308B2 /* LoginItems.framework */,
+				521BB1C21DE4B17C00F308B2 /* LoginItems.framework.dSYM */,
 			);
 			name = Carthage;
 			sourceTree = "<group>";
@@ -136,7 +150,7 @@
 				527163621DD5F66400797C76 /* Assets.xcassets */,
 				527163671DD5F66400797C76 /* Info.plist */,
 				527163641DD5F66400797C76 /* MainMenu.xib */,
-				52524B171DE3A889003953BD /* PreferencesWindow.xib */,
+				521BB1C41DE4B1D200F308B2 /* PreferencesWindow.xib */,
 				521BB1BF1DE4959F00F308B2 /* PreferencesWindowController.swift */,
 				524094BB1DE314A200C3BEAF /* Processes.swift */,
 				524094C11DE31DF500C3BEAF /* SyncthingBar-Bridging-Header.h */,
@@ -169,6 +183,7 @@
 				5271635A1DD5F66400797C76 /* Frameworks */,
 				5271635B1DD5F66400797C76 /* Resources */,
 				524094D51DE451D700C3BEAF /* Embed Frameworks */,
+				521BB1C11DE4B14C00F308B2 /* Copy Framework Symbols */,
 			);
 			buildRules = (
 			);
@@ -249,7 +264,7 @@
 				52524B151DDFA27D003953BD /* syncthing in Resources */,
 				527163631DD5F66400797C76 /* Assets.xcassets in Resources */,
 				527163661DD5F66400797C76 /* MainMenu.xib in Resources */,
-				52524B181DE3A889003953BD /* PreferencesWindow.xib in Resources */,
+				521BB1C61DE4B1D200F308B2 /* PreferencesWindow.xib in Resources */,
 				52524B0F1DDE62D9003953BD /* WebViewWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -298,6 +313,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		521BB1C41DE4B1D200F308B2 /* PreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				521BB1C51DE4B1D200F308B2 /* Base */,
+			);
+			name = PreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
 		52524B0D1DDE62D9003953BD /* WebViewWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
