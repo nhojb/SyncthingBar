@@ -2,8 +2,8 @@
 //  SyncthingBarTests.swift
 //  SyncthingBarTests
 //
-//  Created by John on 11/11/2016.
-//  Copyright © 2016 Olive Toast Software Ltd. All rights reserved.
+//  Created by John on 27/04/2018.
+//  Copyright © 2018 Olive Toast Software Ltd. All rights reserved.
 //
 
 import XCTest

@@ -19,11 +19,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     @IBOutlet weak var connectedMenuItem: NSMenuItem!
 
-    lazy var webViewWindowController : WebViewWindowController = WebViewWindowController(windowNibName:"WebViewWindow")
+    lazy var webViewWindowController : WebViewWindowController = WebViewWindowController(windowNibName:NSNib.Name("WebViewWindow"))
 
-    lazy var preferencesWindowController : PreferencesWindowController = PreferencesWindowController(windowNibName:"PreferencesWindow")
+    lazy var preferencesWindowController : PreferencesWindowController = PreferencesWindowController(windowNibName:NSNib.Name("PreferencesWindow"))
 
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
     var client : SyncthingClient?
     var syncthing : Process?
@@ -32,11 +32,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var connected : Bool = false {
         didSet {
             if connected {
-                self.statusItem.image = NSImage(named: "SyncthingEnabled")!
+                self.statusItem.image = NSImage(named: NSImage.Name("SyncthingEnabled"))!
                 self.connectedMenuItem.title = "Connected - \(self.client!.url)"
             }
             else {
-                self.statusItem.image = NSImage(named: "SyncthingDisabled")!
+                self.statusItem.image = NSImage(named: NSImage.Name("SyncthingDisabled"))!
                 self.connectedMenuItem.title = "Not Connected"
             }
         }
@@ -65,7 +65,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.copySyncthing()
 
         self.statusItem.menu = self.statusMenu
-        self.statusItem.image = NSImage(named: "SyncthingDisabled")!
+        self.statusItem.image = NSImage(named: NSImage.Name("SyncthingDisabled"))!
 
         self.updateClient()
 
@@ -141,7 +141,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     @IBAction func openPreferences(_ sender: Any) {
-        NSApplication.shared().activate(ignoringOtherApps: true)
+        NSApplication.shared.activate(ignoringOtherApps: true)
 
         self.preferencesWindowController.showWindow(self)
     }
@@ -149,7 +149,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     @IBAction func openSyncthing(_ sender: Any) {
         // User UserDefaults url in case the API key has not yet been set (user can still connect via browser).
         if let url = UserDefaults.standard.url(forKey:SyncthingURLDefaultsKey) {
-            NSApplication.shared().activate(ignoringOtherApps: true)
+            NSApplication.shared.activate(ignoringOtherApps: true)
 
             self.webViewWindowController.showWindow(self)
 
