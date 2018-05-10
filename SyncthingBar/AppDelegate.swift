@@ -104,6 +104,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.client = SyncthingClient(url:url, apiKey:apiKey)
 
         self.client?.ping() { [unowned self] (ok, error) in
+            assert(Thread.isMainThread)
             self.connected = ok
         }
     }
@@ -140,6 +141,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
         // Poll until the server is launched:
         self.client?.checkConnection(repeating:5) { [unowned self] (ok, error) in
+            assert(Thread.isMainThread)
             self.connected = ok
         }
     }
@@ -166,6 +168,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.notify?.terminate()
 
         self.client?.ping() { [unowned self] (ok, error) in
+            assert(Thread.isMainThread)
             self.connected = ok
         }
     }
@@ -190,6 +193,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     // NSMenuDelegate
     func menuWillOpen(_ menu: NSMenu) {
         self.client?.ping() { [unowned self] (ok, error) in
+            assert(Thread.isMainThread)
             self.connected = ok
         }
     }

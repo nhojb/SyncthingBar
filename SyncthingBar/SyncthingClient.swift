@@ -36,7 +36,7 @@ class SyncthingClient {
     }
 
     /// Polls syncthing up to "repeating" times to check the connection.
-    func checkConnection(repeating: Int, completionHandler: @escaping(Bool, Error?) -> Void) {
+    func checkConnection(repeating: Int, completionHandler: @escaping (Bool, Error?) -> Void) {
         var count = 0
 
         Timer.scheduledTimer(withTimeInterval:1.0, repeats:true) { (timer) in
@@ -58,11 +58,13 @@ class SyncthingClient {
     func ping(completionHandler: @escaping (Bool, Error?) -> Void) {
         if let request = self.restRequest(forPath:"/rest/system/ping") {
             URLSession.shared.dataTask(with:request) { (data, response, error) in
-                if error == nil && (response as! HTTPURLResponse).statusCode == 200 {
-                    completionHandler(true, nil)
-                }
-                else {
-                    completionHandler(false, SyncthingClientError.invalidResponse)
+                DispatchQueue.main.async {
+                    if error == nil && (response as! HTTPURLResponse).statusCode == 200 {
+                        completionHandler(true, nil)
+                    }
+                    else {
+                        completionHandler(false, SyncthingClientError.invalidResponse)
+                    }
                 }
             }.resume()
         }
@@ -84,24 +86,26 @@ class SyncthingClient {
         }
 
         URLSession.shared.jsonTask(with:request) { (json, response, error) in
-            if error != nil {
-                completionHandler(nil, error)
-            }
-            else if let json = json {
-                guard let root = json as? [Any] else {
-                    completionHandler(nil, SyncthingClientError.parseError)
-                    return
+            DispatchQueue.main.async {
+                if error != nil {
+                    completionHandler(nil, error)
                 }
+                else if let json = json {
+                    guard let root = json as? [Any] else {
+                        completionHandler(nil, SyncthingClientError.parseError)
+                        return
+                    }
 
-                guard let info = root.first as? [String: Any] else {
-                    completionHandler(nil, SyncthingClientError.parseError)
-                    return
+                    guard let info = root.first as? [String: Any] else {
+                        completionHandler(nil, SyncthingClientError.parseError)
+                        return
+                    }
+
+                    completionHandler(info, nil)
                 }
-
-                completionHandler(info, nil)
-            }
-            else {
-                completionHandler(nil, SyncthingClientError.parseError)
+                else {
+                    completionHandler(nil, SyncthingClientError.parseError)
+                }
             }
         }.resume()
     }
