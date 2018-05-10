@@ -10,7 +10,8 @@ import Cocoa
 
 let SyncthingURLDefaultsKey = "SyncthingURL"
 let SyncthingAPIKeyDefaultsKey = "SyncthingAPIKey"
-let SyncthingLaunchAtStartupDefaultsKey = "LaunchAtStartup"
+let SyncthingLaunchDefaultsKey = "LaunchAtStartup"
+let SyncthingNotifyLaunchDefaultsKey = "LaunchNotifyAtStartup"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
@@ -44,7 +45,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     func registerDefaults() {
         UserDefaults.standard.register(defaults: [SyncthingURLDefaultsKey: "http://127.0.0.1:8384",
-                                                  SyncthingLaunchAtStartupDefaultsKey: true])
+                                                  SyncthingLaunchDefaultsKey: true,
+                                                  // syncthing-inotify is only required if not using syncthing's built-in file watcher.
+                                                  // See https://docs.syncthing.net/users/syncing.html#scanning
+                                                  SyncthingNotifyLaunchDefaultsKey: false])
     }
 
     func applicationSupportURLFor(binary name: String) -> URL? {
@@ -68,19 +72,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.statusItem.image = NSImage(named: NSImage.Name("SyncthingDisabled"))!
 
         self.updateClient()
+        self.updateSyncthing()
 
         if self.client == nil {
             self.openPreferences(self)
-        }
-
-        if UserDefaults.standard.bool(forKey:SyncthingLaunchAtStartupDefaultsKey) {
-            self.startSyncthing()
         }
 
         NotificationCenter.default.addObserver(forName:UserDefaults.didChangeNotification,
                                                object:UserDefaults.standard,
                                                queue:nil) { [unowned self] (notification) in
             self.updateClient()
+            self.updateSyncthing()
         }
     }
 
@@ -106,27 +108,34 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
 
+    func updateSyncthing() {
+        guard UserDefaults.standard.bool(forKey:SyncthingLaunchDefaultsKey) else {
+            self.stopSyncthing()
+            return
+        }
+
+        self.startSyncthing()
+
+        if UserDefaults.standard.bool(forKey:SyncthingNotifyLaunchDefaultsKey) {
+            self.startSyncthingNotify()
+        } else {
+            self.notify?.terminate()
+        }
+    }
+
     func startSyncthing() {
+        guard self.syncthing == nil else {
+            return
+        }
+
         // syncthing -no-browser
-        if self.syncthing == nil && Processes.find(processName:"syncthing") == nil {
+        if Processes.find(processName:"syncthing") == nil {
             if let url = self.applicationSupportURLFor(binary:"syncthing") {
-                print("Launching: \(url)")
                 self.syncthing = Process.launchedProcess(launchPath:url.path, arguments:["-no-browser"])
             }
         }
         else {
             print("syncthing already running!")
-        }
-
-        // syncthing-inotify
-        if self.notify == nil && Processes.find(processName:"syncthing-inotify") == nil {
-            if let url = self.applicationSupportURLFor(binary:"syncthing-inotify") {
-                print("Launching: \(url)")
-                self.notify = Process.launchedProcess(launchPath:url.path, arguments:[])
-            }
-        }
-        else {
-            print("syncthing-inotify already running!")
         }
 
         // Poll until the server is launched:
@@ -135,9 +144,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
 
+    func startSyncthingNotify() {
+        guard self.notify == nil else {
+            return
+        }
+
+        // syncthing-inotify
+        if Processes.find(processName:"syncthing-inotify") == nil {
+            if let url = self.applicationSupportURLFor(binary:"syncthing-inotify") {
+                self.notify = Process.launchedProcess(launchPath:url.path, arguments:[])
+            }
+        }
+        else {
+            print("syncthing-inotify already running!")
+        }
+
+    }
+
     func stopSyncthing() {
         self.syncthing?.terminate()
         self.notify?.terminate()
+
+        self.client?.ping() { [unowned self] (ok, error) in
+            self.connected = ok
+        }
     }
 
     @IBAction func openPreferences(_ sender: Any) {
