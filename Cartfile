@@ -5,4 +5,4 @@
 # carthage bootstrap --no-build
 #
 
-github "nhojb/LoginItems" >= 1.0
+github "nhojb/LoginItems" "master"
