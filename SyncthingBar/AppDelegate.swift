@@ -20,9 +20,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     @IBOutlet weak var connectedMenuItem: NSMenuItem!
 
-    lazy var webViewWindowController : WebViewWindowController = WebViewWindowController(windowNibName:NSNib.Name("WebViewWindow"))
+    lazy var webViewWindowController : WebViewWindowController = WebViewWindowController(windowNibName: "WebViewWindow")
 
-    lazy var preferencesWindowController : PreferencesWindowController = PreferencesWindowController(windowNibName:NSNib.Name("PreferencesWindow"))
+    lazy var preferencesWindowController : PreferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindow")
 
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
 
@@ -33,11 +33,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var connected : Bool = false {
         didSet {
             if connected {
-                self.statusItem.image = NSImage(named: NSImage.Name("SyncthingEnabled"))!
+                self.statusItem.image = NSImage(named: "SyncthingEnabled")!
                 self.connectedMenuItem.title = "Connected - \(self.client!.url)"
             }
             else {
-                self.statusItem.image = NSImage(named: NSImage.Name("SyncthingDisabled"))!
+                self.statusItem.image = NSImage(named: "SyncthingDisabled")!
                 self.connectedMenuItem.title = "Not Connected"
             }
         }
@@ -69,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.copySyncthing()
 
         self.statusItem.menu = self.statusMenu
-        self.statusItem.image = NSImage(named: NSImage.Name("SyncthingDisabled"))!
+        self.statusItem.image = NSImage(named: "SyncthingDisabled")!
 
         self.updateClient()
         self.updateSyncthing()
