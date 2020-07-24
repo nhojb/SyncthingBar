@@ -177,6 +177,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 527163751DD5F66400797C76 /* Build configuration list for PBXNativeTarget "SyncthingBar" */;
 			buildPhases = (
+				52E1C6CE24CAFB2D00C3B504 /* Swiftlint */,
 				527163591DD5F66400797C76 /* Sources */,
 				5271635A1DD5F66400797C76 /* Frameworks */,
 				5271635B1DD5F66400797C76 /* Resources */,
@@ -275,6 +276,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		52E1C6CE24CAFB2D00C3B504 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n    # Must be run for each build, otherwise Xcode discards errors/warnings\n    swiftlint --config $PROJECT_DIR/swiftlint.yml --path $PROJECT_DIR\nelse\n    echo \"error: 'swiftlint' tool not found. Please install via Homebrew\"\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		527163591DD5F66400797C76 /* Sources */ = {

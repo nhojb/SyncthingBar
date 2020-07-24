@@ -1,0 +1,98 @@
+# swiftlint configuration
+# https://github.com/realm/SwiftLint
+#
+# Install via Homebrew.
+#
+# Swiftlint is useful for catching some classes of error (e.g. non-weak delegate)
+# However (IMO) the defaults include too many style rules, which need not be enforced for correctness.
+# We disable some of the more egregious rules.
+#
+# See: https://github.com/realm/SwiftLint/blob/master/Rules.md
+
+disabled_rules:
+  # Force casting is perfectly acceptable when the type is known e.g. view.descendants { $0 is Foo } as! [Foo]
+  # swiftlint already disables this warning in some cases (e.g. IBOutlet).
+  - force_cast
+  - todo
+  # else, catch should be on the same line as the closing brace: sometimes this just doesn't read well.
+  - statement_position
+  - operator_whitespace
+#  - closing_brace
+  - closure_parameter_position
+  # Just annoying - parameter names provide useful documentation
+  - unused_closure_parameter
+opt_in_rules:
+  - array_init
+  - closure_spacing
+  - conditional_returns_on_newline
+  - empty_count
+  - fatal_error_message
+  - first_where
+  - force_unwrapping
+  - implicit_return
+  - multiline_arguments
+  - multiline_parameters
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  # e.g. super.loadView()
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - trailing_closure
+  - unneeded_parentheses_in_closure_argument
+  # if 1 == foo { ...
+  - yoda_condition
+excluded:
+  # Paths are relative to project dir.
+  # Note: swiftlint support for globbing is unreliable (depends on working directory used when running swiftlint).
+  # So we have to exclude Package.swift & .build explicitly using full (relative) paths.
+  - Carthage
+  - SyncthingBarTests
+  - .build
+  - Package.swift
+
+# rule customisation
+line_length:
+  180
+function_body_length:
+  warning: 50
+identifier_name:
+  # Permit identifiers such as 'id'
+  min_length: 2
+  # excluded works (for some reason "allowed_symbols" does not)
+  excluded: [x, y, i]
+implicit_return:
+  included:
+    - closure
+    - getter
+file_length:
+  ignore_comment_only_lines: true
+custom_rules:
+  # More permissive version of operator_usage_whitespace which allows literal fractions e.g. 1/6
+  custom_operator_usage_whitespace:
+    message: "Operators should be surrounded by a 1 space when they are being used."
+    severity: warning
+    # Notes:
+    # We only need worry about the case when there are no spaces on *both* sides of the operator (e.g. 1*2)
+    # Othewise the Swift compiler will flag invalid unary operator usage.
+    #
+    # Rules:
+    # 1. a*b, but not "(*" which is used for @available(*,
+    # 2. a[+-]b, but not 1e-9 or 1e+9 or &+ etc (overflow operators).
+    # 3. Division of a non-digit e.g. foo/2
+    # 4. Division by a non-digit e.g. 2/foo
+    # Note that in 3 & 4 we can't use word match (\w) because it includes integers.
+    # 5. Multiple spaces before operator.
+    # 6. Multiple spaces after operator.
+    regex: "(\\S(?<!\\()\\*)|(\\S(?<!\\de|&)[\\+\\-])|([a-zA-Z\\)\\.]\\d*/\\S)|(\\S\\/[a-zA-Z\\(])|(\\S {2,}[+\\-\\*\\/&\\|])|([+\\-\\*\\/&\\|] {2,})"
+    match_kinds:
+      - identifier
+      - number
+  prefer_property_to_getter:
+    message: "Prefer computed properties to get functions."
+    severity: warning
+    regex: "(func get\\w+\\(\\s*\\)(?!\\s*throws))"
+  prefer_property_to_setter:
+    message: "Prefer computed properties to set functions."
+    severity: warning
+    regex: "(?<!@IBAction )(func set\\w+\\(\\s*_\\s+[\\s\\w]+:[\\s\\w\\!]+\\)(?!\\s*throws))"
