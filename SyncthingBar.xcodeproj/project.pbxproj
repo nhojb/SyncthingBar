@@ -17,8 +17,6 @@
 		52524B0C1DDE62B3003953BD /* WebViewWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */; };
 		52524B0F1DDE62D9003953BD /* WebViewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 52524B0D1DDE62D9003953BD /* WebViewWindow.xib */; };
 		52524B111DDF8505003953BD /* URLSession+JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52524B101DDF8505003953BD /* URLSession+JSON.swift */; };
-		52524B151DDFA27D003953BD /* syncthing in Resources */ = {isa = PBXBuildFile; fileRef = 52524B131DDFA27D003953BD /* syncthing */; };
-		52524B161DDFA27D003953BD /* syncthing-inotify in Resources */ = {isa = PBXBuildFile; fileRef = 52524B141DDFA27D003953BD /* syncthing-inotify */; };
 		527163611DD5F66400797C76 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527163601DD5F66400797C76 /* AppDelegate.swift */; };
 		527163631DD5F66400797C76 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 527163621DD5F66400797C76 /* Assets.xcassets */; };
 		527163661DD5F66400797C76 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 527163641DD5F66400797C76 /* MainMenu.xib */; };
@@ -71,8 +69,6 @@
 		52524B0B1DDE62B3003953BD /* WebViewWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewWindowController.swift; sourceTree = "<group>"; };
 		52524B0E1DDE62D9003953BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/WebViewWindow.xib; sourceTree = "<group>"; };
 		52524B101DDF8505003953BD /* URLSession+JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "URLSession+JSON.swift"; sourceTree = "<group>"; };
-		52524B131DDFA27D003953BD /* syncthing */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = syncthing; path = SyncthingBar/Resources/syncthing; sourceTree = "<group>"; };
-		52524B141DDFA27D003953BD /* syncthing-inotify */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.executable"; name = "syncthing-inotify"; path = "SyncthingBar/Resources/syncthing-inotify"; sourceTree = "<group>"; };
 		5271635D1DD5F66400797C76 /* Syncthing Bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Syncthing Bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		527163601DD5F66400797C76 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		527163621DD5F66400797C76 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -112,21 +108,11 @@
 			name = Carthage;
 			sourceTree = "<group>";
 		};
-		52524B121DDFA26D003953BD /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				52524B131DDFA27D003953BD /* syncthing */,
-				52524B141DDFA27D003953BD /* syncthing-inotify */,
-			);
-			name = Resources;
-			sourceTree = "<group>";
-		};
 		527163541DD5F66400797C76 = {
 			isa = PBXGroup;
 			children = (
 				5271635F1DD5F66400797C76 /* SyncthingBar */,
 				5271636F1DD5F66400797C76 /* SyncthingBarTests */,
-				52524B121DDFA26D003953BD /* Resources */,
 				5271635E1DD5F66400797C76 /* Products */,
 				521BB1A01DE47FF100F308B2 /* Carthage */,
 			);
@@ -259,8 +245,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52524B161DDFA27D003953BD /* syncthing-inotify in Resources */,
-				52524B151DDFA27D003953BD /* syncthing in Resources */,
 				527163631DD5F66400797C76 /* Assets.xcassets in Resources */,
 				527163661DD5F66400797C76 /* MainMenu.xib in Resources */,
 				521BB1C61DE4B1D200F308B2 /* PreferencesWindow.xib in Resources */,

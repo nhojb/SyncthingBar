@@ -10,8 +10,8 @@ import Cocoa
 
 let kSyncthingURLDefaultsKey = "SyncthingURL"
 let kSyncthingAPIKeyDefaultsKey = "SyncthingAPIKey"
+let kSyncthingPathDefaultsKey = "SyncthingPath"
 let kSyncthingLaunchDefaultsKey = "LaunchAtStartup"
-let kSyncthingNotifyLaunchDefaultsKey = "LaunchNotifyAtStartup"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
@@ -20,56 +20,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
     @IBOutlet weak var connectedMenuItem: NSMenuItem!
 
-    lazy var webViewWindowController: WebViewWindowController = WebViewWindowController(windowNibName: "WebViewWindow")
-
-    lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindow")
-
-    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-
-    var client: SyncthingClient?
-    var syncthing: Process?
-    var notify: Process?
-
     var connected: Bool = false {
         didSet {
             if let client = self.client, connected {
                 self.statusItem.image = NSImage(named: "SyncthingEnabled")
                 self.connectedMenuItem.title = "Connected - \(client.url)"
-            }
-            else {
+            } else {
                 self.statusItem.image = NSImage(named: "SyncthingDisabled")
                 self.connectedMenuItem.title = "Not Connected"
             }
         }
     }
 
+    private lazy var webViewWindowController: WebViewWindowController = WebViewWindowController(windowNibName: "WebViewWindow")
+
+    private lazy var preferencesWindowController: PreferencesWindowController = PreferencesWindowController(windowNibName: "PreferencesWindow")
+
+    private let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
+
+    private var client: SyncthingClient?
+
+    private var syncthing: Process?
+
+    private var syncthingPath: String?
+
+    private var launchSyncthing = true
+
     func registerDefaults() {
         UserDefaults.standard.register(defaults: [kSyncthingURLDefaultsKey: "http://127.0.0.1:8384",
-                                                  kSyncthingLaunchDefaultsKey: true,
-                                                  // syncthing-inotify is only required if not using syncthing's built-in file watcher.
-                                                  // See https://docs.syncthing.net/users/syncing.html#scanning
-                                                  kSyncthingNotifyLaunchDefaultsKey: false])
-    }
-
-    func applicationSupportURLFor(binary name: String) -> URL? {
-        if var syncthingBarUrl = try? FileManager.default.url(for: .applicationSupportDirectory,
-                                                              in: .userDomainMask,
-                                                              appropriateFor: nil,
-                                                              create: false) {
-            // The isDirectory: true is important - otherwise appending file names will fail.
-            syncthingBarUrl.appendPathComponent("SyncthingBar", isDirectory: true)
-            return URL(string: name, relativeTo: syncthingBarUrl)
-        }
-        return nil
+                                                  kSyncthingPathDefaultsKey: "/usr/local/bin/syncthing",
+                                                  kSyncthingLaunchDefaultsKey: true])
     }
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         self.registerDefaults()
 
-        self.copySyncthing()
-
         self.statusItem.menu = self.statusMenu
         self.statusItem.image = NSImage(named: "SyncthingDisabled")
+
+        self.launchSyncthing = UserDefaults.standard.bool(forKey: kSyncthingLaunchDefaultsKey)
+        self.syncthingPath = UserDefaults.standard.string(forKey: kSyncthingPathDefaultsKey)
 
         self.updateClient()
         self.updateSyncthing()
@@ -78,8 +68,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             self.openPreferences(self)
         }
 
-        _ = NotificationCenter.default.addObserver(forName: UserDefaults.didChangeNotification,
-                                                   object: UserDefaults.standard,
+        _ = NotificationCenter.default.addObserver(forName: PreferencesWindowController.preferencesDidCloseNotification,
+                                                   object: nil,
                                                    queue: nil) { [weak self] notification in
             self?.updateClient()
             self?.updateSyncthing()
@@ -87,7 +77,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        self.notify?.terminate()
         self.syncthing?.terminate()
     }
 
@@ -110,17 +99,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
 
     func updateSyncthing() {
-        guard UserDefaults.standard.bool(forKey: kSyncthingLaunchDefaultsKey) else {
+        let launchSyncthing = UserDefaults.standard.bool(forKey: kSyncthingLaunchDefaultsKey)
+        let syncthingPath = UserDefaults.standard.string(forKey: kSyncthingPathDefaultsKey)
+
+        if launchSyncthing != self.launchSyncthing || syncthingPath != self.syncthingPath {
             self.stopSyncthing()
-            return
         }
 
-        self.startSyncthing()
+        self.launchSyncthing = launchSyncthing
+        self.syncthingPath = syncthingPath
 
-        if UserDefaults.standard.bool(forKey: kSyncthingNotifyLaunchDefaultsKey) {
-            self.startSyncthingNotify()
-        } else {
-            self.notify?.terminate()
+        if launchSyncthing {
+            self.startSyncthing()
         }
     }
 
@@ -129,13 +119,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
             return
         }
 
+        guard let syncthingPath = self.syncthingPath else {
+            return
+        }
+
         // syncthing -no-browser
         if Processes.find(processName: "syncthing") == nil {
-            if let url = self.applicationSupportURLFor(binary: "syncthing") {
-                self.syncthing = Process.launchedProcess(launchPath: url.path, arguments: ["-no-browser"])
-            }
-        }
-        else {
+            self.syncthing = Process.launchedProcess(launchPath: syncthingPath, arguments: ["-no-browser"])
+        } else {
             print("syncthing already running!")
         }
 
@@ -146,26 +137,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
 
-    func startSyncthingNotify() {
-        guard self.notify == nil else {
+    func stopSyncthing() {
+        guard self.syncthing != nil else {
             return
         }
 
-        // syncthing-inotify
-        if Processes.find(processName: "syncthing-inotify") == nil {
-            if let url = self.applicationSupportURLFor(binary: "syncthing-inotify") {
-                self.notify = Process.launchedProcess(launchPath: url.path, arguments: [])
-            }
-        }
-        else {
-            print("syncthing-inotify already running!")
-        }
-
-    }
-
-    func stopSyncthing() {
         self.syncthing?.terminate()
-        self.notify?.terminate()
+        self.syncthing?.waitUntilExit()
+        self.syncthing = nil
 
         self.client?.ping { [weak self] ok, error in
             assert(Thread.isMainThread)
@@ -198,69 +177,4 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         }
     }
 
-    func copySyncthing() {
-        let fileManager = FileManager.default
-
-        func copyBinary(_ name: String) -> Bool {
-            guard let src = Bundle.main.url(forResource: name, withExtension: nil) else {
-                return false
-            }
-
-            guard let dst = self.applicationSupportURLFor(binary: name) else {
-                return false
-            }
-
-            // If dst exists, check if it is older:
-            guard let srcAttrs = try? fileManager.attributesOfItem(atPath: src.path),
-                  let dstAttrs = try? fileManager.attributesOfItem(atPath: dst.path) else {
-                return false
-            }
-
-            if dstAttrs[.modificationDate] as! Date >= srcAttrs[.modificationDate] as! Date {
-                print("copySyncthing: \(name) already up-to-date")
-                return true
-            }
-
-            // else remove the older binary
-            do {
-                try fileManager.removeItem(at: dst)
-            }
-            catch {
-                return false
-            }
-
-            do {
-                print("copySyncthing: copying \(name)")
-                try fileManager.copyItem(at: src, to: dst)
-                return true
-            }
-            catch {
-                return false
-            }
-        }
-
-        do {
-            var syncthingBarUrl = try fileManager.url(for: .applicationSupportDirectory,
-                                                      in: .userDomainMask,
-                                                      appropriateFor: nil,
-                                                      create: false)
-
-            // The isDirectory:true is important - otherwise appending file names will fail.
-            syncthingBarUrl.appendPathComponent("SyncthingBar", isDirectory: true)
-
-            // withIntermediateDirectories: true will ensure createDirectory succeeds, even if syncthingBarUrl already exists
-            try fileManager.createDirectory(at: syncthingBarUrl, withIntermediateDirectories: true)
-
-            if !copyBinary("syncthing") {
-                print("Warning, copy syncthing failed!")
-            }
-
-            if !copyBinary("syncthing-inotify") {
-                print("Warning, copy syncthing-inotify failed")
-            }
-        }
-        catch {
-            print("Warning, copySyncthing failed")
-        }
-    }
 }
