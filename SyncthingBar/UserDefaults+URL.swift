@@ -10,8 +10,8 @@ import Foundation
 
 extension UserDefaults {
     func url(forKey key: String) -> URL? {
-        if let urlString = self.object(forKey:key) as? String {
-            return URL(string:urlString)
+        if let urlString = self.object(forKey: key) as? String {
+            return URL(string: urlString)
         }
         else {
             return nil

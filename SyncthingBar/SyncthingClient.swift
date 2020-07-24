@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum SyncthingClientError : Error {
+enum SyncthingClientError: Error {
     case invalidRequest
     case invalidResponse
     case parseError
 }
 
 class SyncthingClient {
-    let apiKey : String
-    let url : URL
+    let apiKey: String
+    let url: URL
 
     init(url: URL, apiKey: String) {
         self.url = url
@@ -24,10 +24,10 @@ class SyncthingClient {
     }
 
     func restRequest(forPath path: String, httpMethod: String = "GET") -> URLRequest? {
-        if let restUrl = URL(string:path, relativeTo:self.url) {
-            var request = URLRequest(url:restUrl)
+        if let restUrl = URL(string: path, relativeTo: self.url) {
+            var request = URLRequest(url: restUrl)
             request.httpMethod = httpMethod
-            request.setValue(self.apiKey, forHTTPHeaderField:"X-API-Key")
+            request.setValue(self.apiKey, forHTTPHeaderField: "X-API-Key")
             return request
         }
         else {
@@ -39,13 +39,13 @@ class SyncthingClient {
     func checkConnection(repeating: Int, completionHandler: @escaping (Bool, Error?) -> Void) {
         var count = 0
 
-        Timer.scheduledTimer(withTimeInterval:1.0, repeats:true) { (timer) in
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { timer in
             count += 1
             if count >= repeating {
                 timer.invalidate()
             }
 
-            self.ping() { (ok, error) in
+            self.ping { ok, error in
                 // We ignore the error to ensure we keep checking:
                 if ok {
                     timer.invalidate()
@@ -56,8 +56,8 @@ class SyncthingClient {
     }
 
     func ping(completionHandler: @escaping (Bool, Error?) -> Void) {
-        if let request = self.restRequest(forPath:"/rest/system/ping") {
-            URLSession.shared.dataTask(with:request) { (data, response, error) in
+        if let request = self.restRequest(forPath: "/rest/system/ping") {
+            URLSession.shared.dataTask(with: request) { data, response, error in
                 DispatchQueue.main.async {
                     if error == nil && (response as! HTTPURLResponse).statusCode == 200 {
                         completionHandler(true, nil)
@@ -79,13 +79,13 @@ class SyncthingClient {
             path += "&limit=\(limit)"
         }
 
-        guard let request = self.restRequest(forPath:path) else {
+        guard let request = self.restRequest(forPath: path) else {
             // TODO: Should this method throw, or return false?
             completionHandler(nil, SyncthingClientError.invalidRequest)
             return
         }
 
-        URLSession.shared.jsonTask(with:request) { (json, response, error) in
+        URLSession.shared.jsonTask(with: request) { json, response, error in
             DispatchQueue.main.async {
                 if error != nil {
                     completionHandler(nil, error)
@@ -110,4 +110,3 @@ class SyncthingClient {
         }.resume()
     }
 }
-

@@ -10,8 +10,8 @@ import Foundation
 
 extension URLSession {
     func jsonTask(with request: URLRequest, completionHandler: @escaping (Any?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        return self.dataTask(with:request) { (data, response, error) in
-            var jsonObject : Any?
+        return self.dataTask(with: request) { data, response, error in
+            var jsonObject: Any?
             if let data = data {
                 jsonObject = try? JSONSerialization.jsonObject(with: data)
             }

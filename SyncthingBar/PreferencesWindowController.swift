@@ -8,15 +8,15 @@
 
 import Cocoa
 
-class PreferencesWindowController : NSWindowController {
+class PreferencesWindowController: NSWindowController {
 
-    @IBOutlet weak var urlTextField : NSTextField!
+    @IBOutlet weak var urlTextField: NSTextField!
 
-    @IBOutlet weak var apiKeyTextField : NSTextField!
+    @IBOutlet weak var apiKeyTextField: NSTextField!
 
     func windowWillClose(_ notification: Notification) {
         // Ensure we sync UserDefaults: bindings do not update when the window closes.
-        UserDefaults.standard.set(self.urlTextField.stringValue, forKey:SyncthingURLDefaultsKey)
-        UserDefaults.standard.set(self.apiKeyTextField.stringValue, forKey:SyncthingAPIKeyDefaultsKey)
+        UserDefaults.standard.set(self.urlTextField.stringValue, forKey: kSyncthingURLDefaultsKey)
+        UserDefaults.standard.set(self.apiKeyTextField.stringValue, forKey: kSyncthingAPIKeyDefaultsKey)
     }
 }
