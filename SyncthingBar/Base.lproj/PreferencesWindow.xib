@@ -20,103 +20,129 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
             <rect key="contentRect" x="196" y="240" width="454" height="249"/>
             <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
-            <view key="contentView" wantsLayer="YES" id="EiT-Mj-1SZ">
-                <rect key="frame" x="0.0" y="0.0" width="454" height="249"/>
-                <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" wantsLayer="YES" misplaced="YES" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="498" height="249"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="su4-Zc-f0U">
-                        <rect key="frame" x="44" y="210" width="98" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Syncthing URL:" id="awh-MM-rnm">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rIk-JM-sCP">
-                        <rect key="frame" x="148" y="207" width="286" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="o7G-q5-6Pe">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="ec4-6Y-kvp" name="value" keyPath="values.SyncthingURL" id="Lax-iN-fAU">
-                                <dictionary key="options">
-                                    <string key="NSNullPlaceholder">http://127.0.0.1:8384</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gzX-To-8hf">
-                        <rect key="frame" x="89" y="169" width="54" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="API Key:" id="h93-Jp-JdZ">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tSG-AX-e5v">
-                        <rect key="frame" x="148" y="166" width="286" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="gdr-YK-38A">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="ec4-6Y-kvp" name="value" keyPath="values.SyncthingAPIKey" id="jYS-2e-zoI">
-                                <dictionary key="options">
-                                    <string key="NSNullPlaceholder">Required</string>
-                                </dictionary>
-                            </binding>
-                        </connections>
-                    </textField>
-                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-Gt-m8j">
-                        <rect key="frame" x="1" y="52" width="454" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </box>
-                    <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="VZV-rk-zKZ">
-                        <rect key="frame" x="0.0" y="151" width="454" height="5"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    </box>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QMO-Tt-PwB">
-                        <rect key="frame" x="18" y="110" width="122" height="17"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3dw-nj-l8m">
+                        <rect key="frame" x="20" y="208" width="458" height="21"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="su4-Zc-f0U">
+                                <rect key="frame" x="-2" y="5" width="98" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Syncthing URL:" id="awh-MM-rnm">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rIk-JM-sCP">
+                                <rect key="frame" x="102" y="0.0" width="356" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="o7G-q5-6Pe">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ec4-6Y-kvp" name="value" keyPath="values.SyncthingURL" id="Lax-iN-fAU">
+                                        <dictionary key="options">
+                                            <string key="NSNullPlaceholder">http://127.0.0.1:8384</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o2a-IA-IJx">
+                        <rect key="frame" x="20" y="167" width="458" height="21"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gzX-To-8hf">
+                                <rect key="frame" x="-2" y="5" width="98" height="16"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="API Key:" id="h93-Jp-JdZ">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tSG-AX-e5v">
+                                <rect key="frame" x="102" y="0.0" width="356" height="21"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" drawsBackground="YES" id="gdr-YK-38A">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ec4-6Y-kvp" name="value" keyPath="values.SyncthingAPIKey" id="jYS-2e-zoI">
+                                        <dictionary key="options">
+                                            <string key="NSNullPlaceholder">Required</string>
+                                        </dictionary>
+                                    </binding>
+                                </connections>
+                            </textField>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QMO-Tt-PwB">
+                        <rect key="frame" x="18" y="110" width="100" height="16"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="Syncthing Path:" id="GSQ-RV-UhE">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aDV-rv-aYy">
-                        <rect key="frame" x="146" y="18" width="288" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="check" title="Open Syncthing Bar at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qfm-rd-jbT">
-                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <binding destination="gtQ-Qw-l9o" name="value" keyPath="self.startAtLogin" id="WCW-Fu-bFL"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hgw-L4-p6j">
-                        <rect key="frame" x="146" y="111" width="146" height="16"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <textFieldCell key="cell" lineBreakMode="truncatingHead" title="/usr/local/bin/syncthing" id="VX7-Fi-pBC">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                        <connections>
-                            <binding destination="ec4-6Y-kvp" name="value" keyPath="values.SyncthingPath" id="WcV-t9-wvK"/>
-                        </connections>
-                    </textField>
-                    <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f02-e0-XOD">
-                        <rect key="frame" x="146" y="73" width="290" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZTI-6o-bU3">
+                        <rect key="frame" x="124" y="105" width="354" height="21"/>
+                        <subviews>
+                            <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hgw-L4-p6j">
+                                <rect key="frame" x="-2" y="5" width="275" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="truncatingHead" title="/usr/local/bin/syncthing" id="VX7-Fi-pBC">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                                <connections>
+                                    <binding destination="ec4-6Y-kvp" name="value" keyPath="values.SyncthingPath" id="WcV-t9-wvK"/>
+                                </connections>
+                            </textField>
+                            <button horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4tc-rp-wFt">
+                                <rect key="frame" x="273" y="-7" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Esn-S7-LcA">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="chooseSyncthingPath:" target="-2" id="91u-NI-M5k"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <visibilityPriorities>
+                            <integer value="1000"/>
+                            <integer value="1000"/>
+                        </visibilityPriorities>
+                        <customSpacing>
+                            <real value="3.4028234663852886e+38"/>
+                            <real value="3.4028234663852886e+38"/>
+                        </customSpacing>
+                    </stackView>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="3Zs-Gt-m8j">
+                        <rect key="frame" x="0.0" y="56" width="498" height="5"/>
+                    </box>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="f02-e0-XOD">
+                        <rect key="frame" x="122" y="77" width="129" height="18"/>
                         <buttonCell key="cell" type="check" title="Launch syncthing" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ygO-Lk-1NY">
                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
@@ -130,23 +156,55 @@
                             </binding>
                         </connections>
                     </button>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4tc-rp-wFt">
-                        <rect key="frame" x="353" y="102" width="87" height="32"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="push" title="Choose" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Esn-S7-LcA">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                    <box verticalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="VZV-rk-zKZ">
+                        <rect key="frame" x="0.0" y="144" width="498" height="5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="qpJ-B4-z7M"/>
+                        </constraints>
+                    </box>
+                    <button translatesAutoresizingMaskIntoConstraints="NO" id="aDV-rv-aYy">
+                        <rect key="frame" x="122" y="22" width="192" height="18"/>
+                        <buttonCell key="cell" type="check" title="Open Syncthing Bar at login" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="qfm-rd-jbT">
+                            <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                             <font key="font" metaFont="system"/>
                         </buttonCell>
                         <connections>
-                            <action selector="chooseSyncthingPath:" target="-2" id="91u-NI-M5k"/>
+                            <binding destination="gtQ-Qw-l9o" name="value" keyPath="self.startAtLogin" id="WCW-Fu-bFL"/>
                         </connections>
                     </button>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="ZTI-6o-bU3" secondAttribute="trailing" constant="20" id="2Ho-of-NPe"/>
+                    <constraint firstItem="gzX-To-8hf" firstAttribute="trailing" secondItem="su4-Zc-f0U" secondAttribute="trailing" id="6TA-XS-n19"/>
+                    <constraint firstAttribute="trailing" secondItem="VZV-rk-zKZ" secondAttribute="trailing" id="6cl-bU-MVz"/>
+                    <constraint firstItem="ZTI-6o-bU3" firstAttribute="top" secondItem="QMO-Tt-PwB" secondAttribute="top" id="Bes-20-52e"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aDV-rv-aYy" secondAttribute="trailing" constant="20" id="DBb-Cb-Dzv"/>
+                    <constraint firstItem="aDV-rv-aYy" firstAttribute="leading" secondItem="f02-e0-XOD" secondAttribute="leading" id="EIj-5t-Y8o"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aDV-rv-aYy" secondAttribute="bottom" constant="20" id="F19-l9-8cy"/>
+                    <constraint firstAttribute="trailing" secondItem="3dw-nj-l8m" secondAttribute="trailing" constant="20" id="F5X-NE-vk5"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="f02-e0-XOD" secondAttribute="trailing" constant="20" id="Hwa-4n-Sb0"/>
+                    <constraint firstItem="o2a-IA-IJx" firstAttribute="top" secondItem="3dw-nj-l8m" secondAttribute="bottom" constant="20" id="K7Q-JE-OMA"/>
+                    <constraint firstItem="QMO-Tt-PwB" firstAttribute="top" secondItem="VZV-rk-zKZ" secondAttribute="bottom" constant="20" id="LQe-ar-TbH"/>
+                    <constraint firstAttribute="trailing" secondItem="3Zs-Gt-m8j" secondAttribute="trailing" id="NI1-Dm-dOm"/>
+                    <constraint firstItem="o2a-IA-IJx" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="Nfn-dG-izN"/>
+                    <constraint firstItem="QMO-Tt-PwB" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="Qgk-v6-TSD"/>
+                    <constraint firstItem="ZTI-6o-bU3" firstAttribute="leading" secondItem="QMO-Tt-PwB" secondAttribute="trailing" constant="8" id="ZO0-gb-2MI"/>
+                    <constraint firstItem="3Zs-Gt-m8j" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="ct7-Of-c54"/>
+                    <constraint firstItem="3Zs-Gt-m8j" firstAttribute="top" secondItem="f02-e0-XOD" secondAttribute="bottom" constant="20" id="dUa-Qq-Cjq"/>
+                    <constraint firstItem="aDV-rv-aYy" firstAttribute="top" secondItem="3Zs-Gt-m8j" secondAttribute="bottom" constant="20" id="etr-ql-hWt"/>
+                    <constraint firstItem="VZV-rk-zKZ" firstAttribute="top" secondItem="o2a-IA-IJx" secondAttribute="bottom" constant="20" id="g34-Fs-DWo"/>
+                    <constraint firstAttribute="trailing" secondItem="o2a-IA-IJx" secondAttribute="trailing" constant="20" id="hzA-Ug-4zc"/>
+                    <constraint firstItem="f02-e0-XOD" firstAttribute="leading" secondItem="ZTI-6o-bU3" secondAttribute="leading" id="nAC-Dr-gaO"/>
+                    <constraint firstItem="f02-e0-XOD" firstAttribute="top" secondItem="ZTI-6o-bU3" secondAttribute="bottom" constant="12" id="tRX-Ri-TZ9"/>
+                    <constraint firstItem="3dw-nj-l8m" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="20" id="uK2-9d-9BK"/>
+                    <constraint firstItem="VZV-rk-zKZ" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" id="wxi-mN-hi9"/>
+                    <constraint firstItem="3dw-nj-l8m" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="20" id="z3h-YJ-ADP"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="zhF-EJ-pcD"/>
             </connections>
-            <point key="canvasLocation" x="-137" y="99.5"/>
+            <point key="canvasLocation" x="-159" y="99.5"/>
         </window>
         <userDefaultsController representsSharedInstance="YES" id="ec4-6Y-kvp"/>
         <customObject id="gtQ-Qw-l9o" customClass="LoginItemsManager" customModule="LoginItems"/>
