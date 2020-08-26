@@ -461,7 +461,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = MS8TKNV8QW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -470,7 +470,7 @@
 				);
 				INFOPLIST_FILE = SyncthingBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBar;
 				PRODUCT_NAME = "Syncthing Bar";
 				SWIFT_OBJC_BRIDGING_HEADER = "SyncthingBar/SyncthingBar-Bridging-Header.h";
@@ -486,7 +486,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = MS8TKNV8QW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -495,7 +495,7 @@
 				);
 				INFOPLIST_FILE = SyncthingBar/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.olivetoast.SyncthingBar;
 				PRODUCT_NAME = "Syncthing Bar";
 				SWIFT_OBJC_BRIDGING_HEADER = "SyncthingBar/SyncthingBar-Bridging-Header.h";
