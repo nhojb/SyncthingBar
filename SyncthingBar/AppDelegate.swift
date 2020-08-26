@@ -165,7 +165,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
 
             self.webViewWindowController.showWindow(self)
 
-            self.webViewWindowController.webView?.mainFrame.load(URLRequest(url: url))
+            let request = URLRequest(url: url)
+            self.webViewWindowController.webView?.load(request)
         }
     }
 

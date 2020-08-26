@@ -9,15 +9,19 @@
 import Cocoa
 import WebKit
 
-class WebViewWindowController: NSWindowController, WebResourceLoadDelegate {
-    @IBOutlet var webView: WebView?
+class WebViewWindowController: NSWindowController, WKNavigationDelegate {
 
-    // WebResourceLoadDelegate
-    func webView(_ sender: WebView!, resource identifier: Any!, didFinishLoadingFrom dataSource: WebDataSource!) {
-        if let pageTitle = dataSource.pageTitle {
-            if !pageTitle.contains("unknown device") {
-                self.window?.title = pageTitle
-            }
+    @IBOutlet var webView: WKWebView?
+
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation) {
+        print("\(self) title:", self.webView?.title ?? "nil")
+
+        guard let title = self.webView?.title, !title.contains("unknown device") else {
+            self.window?.title = "Syncthing"
+            return
         }
+
+        self.window?.title = title
     }
+
 }
