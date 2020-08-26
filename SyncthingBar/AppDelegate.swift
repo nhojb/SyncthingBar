@@ -23,10 +23,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     var connected: Bool = false {
         didSet {
             if let client = self.client, connected {
-                self.statusItem.image = NSImage(named: "SyncthingEnabled")
+                self.statusItem.button?.image = NSImage(named: "SyncthingEnabled")
                 self.connectedMenuItem.title = "Connected - \(client.url)"
             } else {
-                self.statusItem.image = NSImage(named: "SyncthingDisabled")
+                self.statusItem.button?.image = NSImage(named: "SyncthingDisabled")
                 self.connectedMenuItem.title = "Not Connected"
             }
         }
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
         self.registerDefaults()
 
         self.statusItem.menu = self.statusMenu
-        self.statusItem.image = NSImage(named: "SyncthingDisabled")
+        self.statusItem.button?.image = NSImage(named: "SyncthingDisabled")
 
         self.launchSyncthing = UserDefaults.standard.bool(forKey: kSyncthingLaunchDefaultsKey)
         self.syncthingPath = UserDefaults.standard.string(forKey: kSyncthingPathDefaultsKey)
