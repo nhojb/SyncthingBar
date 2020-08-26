@@ -22,6 +22,20 @@ class PreferencesWindowController: NSWindowController {
 
     @IBOutlet weak var syncthingPathTextField: NSTextField!
 
+    @IBOutlet weak var versionLabel: NSTextField!
+
+    override func windowDidLoad() {
+        super.windowDidLoad()
+
+        if let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String,
+           let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String {
+            self.versionLabel.stringValue = "Syncthing Bar v\(version) (\(build))"
+            self.versionLabel.isHidden = false
+        } else {
+            self.versionLabel.isHidden = true
+        }
+    }
+
     @objc
     func windowWillClose(_ notification: Notification) {
         // Ensure we sync UserDefaults: bindings do not update when the window closes.
